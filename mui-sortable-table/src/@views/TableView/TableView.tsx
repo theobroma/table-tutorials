@@ -1,5 +1,6 @@
-import { Container, Grid } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Box, Container, Grid, Paper } from '@mui/material';
+
+import FormSection from './FormSection/FormSection';
 
 const TableView = () => {
   return (
@@ -10,11 +11,15 @@ const TableView = () => {
           spacing={3}
           //  style={{ padding: 3 }}
         >
-          <Grid item xs={9}>
-            table
+          <Grid item xs={7}>
+            tableeee
           </Grid>
-          <Grid item xs={3}>
-            form
+          <Grid item xs={5}>
+            <Paper>
+              <Box sx={{ p: 5 }}>
+                <FormSection />
+              </Box>
+            </Paper>
           </Grid>
         </Grid>
       </Box>

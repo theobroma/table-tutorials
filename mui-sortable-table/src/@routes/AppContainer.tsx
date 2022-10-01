@@ -1,7 +1,7 @@
 // https://stackoverflow.com/questions/69928061/struggling-with-typescript-react-eslint-and-simple-arrow-functions-components
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { TableView } from '@mui/icons-material';
+import TableView from '../@views/TableView/TableView';
 
 // import MainView from '../@views/MainView';
 import { AppLayout } from './AppLayout';
