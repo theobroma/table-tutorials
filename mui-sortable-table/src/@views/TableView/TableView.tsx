@@ -1,9 +1,17 @@
 import { Box, Container, Grid, Paper } from '@mui/material';
 
+import { useAppDispatch } from '../../@store/configureStore';
+import { addUserTC } from '../../@store/users/slice';
+
 import FormSection from './FormSection/FormSection';
 import TableSection from './TableSection/TableSection';
 
 const TableView = () => {
+  const dispatch = useAppDispatch();
+  const handleSubmit = (user: any) => {
+    dispatch(addUserTC(user));
+  };
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ flexGrow: 1 }}>
@@ -18,7 +26,9 @@ const TableView = () => {
           <Grid item xs={5}>
             <Paper>
               <Box sx={{ p: 5 }}>
-                <FormSection />
+                <FormSection
+                  submitCallback={(user: any) => handleSubmit(user)}
+                />
               </Box>
             </Paper>
           </Grid>

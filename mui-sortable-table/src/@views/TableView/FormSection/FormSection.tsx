@@ -16,7 +16,7 @@ interface IFormInput {
   gender: string;
 }
 
-const FormSection = () => {
+const FormSection = ({ submitCallback }: any) => {
   const { control, handleSubmit } = useForm<IFormInput>({
     defaultValues: {
       // name: '',
@@ -27,7 +27,10 @@ const FormSection = () => {
     },
   });
 
-  const onSubmit = (data: IFormInput) => console.log(data);
+  const onSubmit = (data: IFormInput) => {
+    console.log('data :>> ', data);
+    submitCallback(data);
+  };
 
   const options = [
     { id: 'male', label: 'Male' },
