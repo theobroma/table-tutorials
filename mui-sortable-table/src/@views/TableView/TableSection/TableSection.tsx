@@ -3,10 +3,13 @@ import type { MRT_ColumnDef } from 'material-react-table';
 import MaterialReactTable from 'material-react-table';
 import type { FC } from 'react';
 
+import { useAppSelector } from '../../../@store/configureStore';
+import { usersSelector } from '../../../@store/users/selectors';
 import type { Person } from '../../../@types';
 
 const TableSection: FC = () => {
-  const data = [] as Person[];
+  const { data: usersData } = useAppSelector(usersSelector);
+
   // should be memoized or stable
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
     () => [
@@ -30,7 +33,7 @@ const TableSection: FC = () => {
     [],
   );
 
-  return <MaterialReactTable columns={columns} data={data} />;
+  return <MaterialReactTable columns={columns} data={usersData} />;
 };
 
 export default TableSection;
