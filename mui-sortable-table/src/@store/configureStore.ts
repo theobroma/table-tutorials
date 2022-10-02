@@ -16,8 +16,6 @@ import storage from 'redux-persist/lib/storage';
 import type { Reducer } from '@reduxjs/toolkit';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { filterSlice } from './filter/slice';
-import { todosSlice } from './todos/slice';
 import { uiReducer, uiSlice } from './ui/slice';
 import { usersSlice } from './users/slice';
 
@@ -35,8 +33,6 @@ const persistConfig = {
 };
 
 const reducers = {
-  [filterSlice.name]: filterSlice.reducer,
-  [todosSlice.name]: todosSlice.reducer,
   [usersSlice.name]: usersSlice.reducer,
   [uiSlice.name]: uiReducer,
 };
