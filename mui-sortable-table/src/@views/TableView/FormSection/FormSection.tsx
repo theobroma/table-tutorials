@@ -9,7 +9,7 @@ import { Button, Stack } from '@mui/material';
 
 interface IFormInput {
   // name: string;
-  select: string;
+  // select: string;
   firstName: string;
   lastName: string;
   age: number;

@@ -8,9 +8,8 @@ type Person = {
     firstName: string;
     lastName: string;
   };
-  address: string;
-  city: string;
-  state: string;
+  age: number;
+  gender: string;
 };
 
 // nested data is ok, see accessorKeys in ColumnDef below
@@ -20,45 +19,40 @@ const data: Person[] = [
       firstName: 'John',
       lastName: 'Doe',
     },
-    address: '261 Erdman Ford',
-    city: 'East Daphne',
-    state: 'Kentucky',
+    age: 21,
+    gender: 'male',
   },
   {
     name: {
       firstName: 'Jane',
       lastName: 'Doe',
     },
-    address: '769 Dominic Grove',
-    city: 'Columbus',
-    state: 'Ohio',
+    age: 32,
+    gender: 'female',
   },
   {
     name: {
       firstName: 'Joe',
       lastName: 'Doe',
     },
-    address: '566 Brakus Inlet',
-    city: 'South Linda',
-    state: 'West Virginia',
+    age: 42,
+    gender: 'male',
   },
   {
     name: {
       firstName: 'Kevin',
       lastName: 'Vandy',
     },
-    address: '722 Emie Stream',
-    city: 'Lincoln',
-    state: 'Nebraska',
+    age: 33,
+    gender: 'male',
   },
   {
     name: {
       firstName: 'Joshua',
       lastName: 'Rolluffs',
     },
-    address: '32188 Larkin Turnpike',
-    city: 'Omaha',
-    state: 'Nebraska',
+    age: 45,
+    gender: 'male',
   },
 ];
 
@@ -75,16 +69,12 @@ const TableSection: FC = () => {
         header: 'Last Name',
       },
       {
-        accessorKey: 'address', // normal accessorKey
-        header: 'Address',
+        accessorKey: 'age', // normal accessorKey
+        header: 'Age',
       },
       {
-        accessorKey: 'city',
-        header: 'City',
-      },
-      {
-        accessorKey: 'state',
-        header: 'State',
+        accessorKey: 'gender',
+        header: 'Gender',
       },
     ],
     [],
