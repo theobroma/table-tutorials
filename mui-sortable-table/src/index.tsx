@@ -1,10 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
+import LoadingPage from './@components/UI/LoadingPage';
 import SnackBarProvider from './@components/UI/SnackBar';
 import { AppContainer } from './@routes/AppContainer';
-import { store } from './@store/configureStore';
+import { persistor, store } from './@store/configureStore';
 import AppThemeProvider from './@themes/theme';
 import * as serviceWorker from './serviceWorker';
 
@@ -20,11 +22,13 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <Provider store={store}>
-      <AppThemeProvider>
-        <SnackBarProvider>
-          <AppContainer />
-        </SnackBarProvider>
-      </AppThemeProvider>
+      <PersistGate loading={<LoadingPage />} persistor={persistor}>
+        <AppThemeProvider>
+          <SnackBarProvider>
+            <AppContainer />
+          </SnackBarProvider>
+        </AppThemeProvider>
+      </PersistGate>
     </Provider>
   </StrictMode>,
 );
