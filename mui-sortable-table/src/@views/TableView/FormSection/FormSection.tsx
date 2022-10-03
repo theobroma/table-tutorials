@@ -1,33 +1,35 @@
 // https://www.ruth-ng.co.uk/how-to-ask-about-gender-in-forms-respectfully
 import { useForm } from 'react-hook-form';
 import { SelectElement, TextFieldElement } from 'react-hook-form-mui';
+import * as z from 'zod';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { Button, Stack } from '@mui/material';
 
-interface IFormInput {
-  // name: string;
-  // select: string;
-  firstName: string;
-  lastName: string;
-  age: number;
-  gender: string;
-}
+const schema = z.object({
+  firstName: z.string().min(2, 'First Name is required. Minimum 2 characters'),
+  lastName: z.string().min(2, 'Last Name is required. Minimum 2 characters'),
+  age: z.number().min(10, 'At least 10 years'),
+  gender: z.string().min(2, 'Gender is required'),
+});
+
+type SchemaType = z.infer<typeof schema>;
 
 const FormSection = ({ submitCallback }: any) => {
-  const { control, handleSubmit } = useForm<IFormInput>({
+  const { control, handleSubmit } = useForm<SchemaType>({
     defaultValues: {
-      // name: '',
       firstName: '',
       lastName: '',
       gender: 'male',
       age: 21,
     },
+    resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: IFormInput) => {
+  const onSubmit = (data: SchemaType) => {
     console.log('data :>> ', data);
     submitCallback(data);
   };
@@ -78,10 +80,6 @@ const FormSection = ({ submitCallback }: any) => {
       />
       <br />
       <br />
-
-      {/* <Button type="submit" color="primary">
-        Submit
-      </Button> */}
 
       <Stack spacing={2} direction="row">
         <Button
