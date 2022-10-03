@@ -1,4 +1,5 @@
 // https://www.ruth-ng.co.uk/how-to-ask-about-gender-in-forms-respectfully
+// https://stackoverflow.com/questions/62741410/react-hook-form-empty-input-field-after-each-submit
 import { useForm } from 'react-hook-form';
 import { SelectElement, TextFieldElement } from 'react-hook-form-mui';
 import * as z from 'zod';
@@ -32,6 +33,25 @@ const FormSection = ({ submitCallback }: any) => {
   const onSubmit = (data: SchemaType) => {
     console.log('data :>> ', data);
     submitCallback(data);
+    clearForm();
+  };
+
+  const clearForm = () => {
+    reset({
+      firstName: '',
+      lastName: '',
+      gender: '',
+      age: 0,
+    });
+  };
+
+  const resetFormTo = () => {
+    reset({
+      firstName: 'John ',
+      lastName: 'Doe',
+      gender: 'male',
+      age: 21,
+    });
   };
 
   const options = [
@@ -90,14 +110,19 @@ const FormSection = ({ submitCallback }: any) => {
         >
           Submit
         </Button>
-        <Button variant="outlined" startIcon={<ClearAllIcon />} fullWidth>
+        <Button
+          variant="outlined"
+          startIcon={<ClearAllIcon />}
+          fullWidth
+          onClick={() => clearForm()}
+        >
           Clear
         </Button>
         <Button
           variant="outlined"
           startIcon={<ReplayIcon />}
           fullWidth
-          onClick={() => reset()}
+          onClick={() => resetFormTo()}
         >
           Reset
         </Button>
