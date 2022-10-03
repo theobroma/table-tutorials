@@ -19,10 +19,10 @@ const schema = z.object({
 type SchemaType = z.infer<typeof schema>;
 
 const FormSection = ({ submitCallback }: any) => {
-  const { control, handleSubmit } = useForm<SchemaType>({
+  const { control, handleSubmit, reset } = useForm<SchemaType>({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      firstName: 'John ',
+      lastName: 'Doe',
       gender: 'male',
       age: 21,
     },
@@ -93,7 +93,12 @@ const FormSection = ({ submitCallback }: any) => {
         <Button variant="outlined" startIcon={<ClearAllIcon />} fullWidth>
           Clear
         </Button>
-        <Button variant="outlined" startIcon={<ReplayIcon />} fullWidth>
+        <Button
+          variant="outlined"
+          startIcon={<ReplayIcon />}
+          fullWidth
+          onClick={() => reset()}
+        >
           Reset
         </Button>
       </Stack>
