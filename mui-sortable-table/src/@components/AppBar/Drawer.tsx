@@ -46,7 +46,7 @@ const PersistentDrawerLeft = ({ children }: { children?: React.ReactNode }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            TodoMVC
+            MUI Sortable Table
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           {/* Theme Menu */}
